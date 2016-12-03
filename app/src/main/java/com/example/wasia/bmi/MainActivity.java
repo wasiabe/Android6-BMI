@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edWeight;
     private EditText edHeight;
     private Button btnHelp;
+    private Bundle bag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,17 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(this, msgBmi, Toast.LENGTH_LONG).show();
 
-            Intent intent = new Intent(this, ResultActivity.class);
-            intent.putExtra("BMI_EXTRA", (float)bmi);
-            startActivity(intent);
+            Bundle bag =   new Bundle();
+            bag.putFloat("BMI_EXTRA", (float)bmi);
+            bag.putString("WEIGHT_EXTRA", String.valueOf(weight));
+            bag.putDouble("HEIGHT_EXTRA", height);
 
-            /*
-            AlertDialog builder = new AlertDialog.Builder(this)
-                    .setMessage("Your BMI is " + String.valueOf(bmi))
-                    .setPositiveButton("OK", null)
-                    .setTitle("BMI")
-                    .show();
-                    */
+            Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtras(bag);
+            startActivity(intent);
 
         } catch (Exception e) {
             String msgErr = e.getMessage();

@@ -10,6 +10,8 @@ public class ResultActivity extends AppCompatActivity {
     private TextView tvBmi;
     private Intent intent;
     private float bmi;
+    private String weight;
+    private String height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,13 +19,16 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         findViews();
-        getBmi();
-        tvBmi.setText(String.format("%.10f",(double)bmi));
+        getValues();
+        tvBmi.setText("Your weight is " + weight + ", height is " + height + ", and you BMI is " + String.format("%.10f",(double)bmi));
     }
 
-    private void getBmi() {
+    private void getValues() {
         intent = getIntent();
-        bmi = intent.getFloatExtra("BMI_EXTRA", (float) 0.5);
+        Bundle bag = intent.getExtras();
+        bmi = bag.getFloat("BMI_EXTRA");
+        weight = bag.getString("WEIGHT_EXTRA");
+        height = String.valueOf(bag.getDouble("HEIGHT_EXTRA"));
     }
 
     private void findViews() {
