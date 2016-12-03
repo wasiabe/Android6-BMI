@@ -1,5 +1,6 @@
 package com.example.wasia.bmi;
 
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,12 +50,20 @@ public class MainActivity extends AppCompatActivity {
             double bmi = weight / Math.pow(height, (double) 2);
             Log.d("BMI", String.valueOf(bmi));
             String msgBmi = "Your BMI is " + String.valueOf((bmi));
+
             Toast.makeText(this, msgBmi, Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(this, ResultActivity.class);
+            intent.putExtra("BMI_EXTRA", (float)bmi);
+            startActivity(intent);
+
+            /*
             AlertDialog builder = new AlertDialog.Builder(this)
                     .setMessage("Your BMI is " + String.valueOf(bmi))
                     .setPositiveButton("OK", null)
                     .setTitle("BMI")
                     .show();
+                    */
 
         } catch (Exception e) {
             String msgErr = e.getMessage();
