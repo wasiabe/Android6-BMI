@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI</string>
+    <string name="calculate_bmi">計算BMI</string>
+    <string name="height">身高</string>
+    <string name="weight">體重</string>
+    <string name="help">說明</string>
+    <string name="bmi_definition">BMI=體重除以身高的平方</string>
+    <string name="ok">好</string>
+</resources>
